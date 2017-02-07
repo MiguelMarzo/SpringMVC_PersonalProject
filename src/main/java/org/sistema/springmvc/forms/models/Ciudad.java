@@ -25,7 +25,7 @@ public class Ciudad {
 	private int id;
 	private String nombre;
 	private String cpostal;
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER, mappedBy="ciudad")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "ciudad")
 	private Set<Cliente> clientes = new HashSet<Cliente>();
 
 	/**
@@ -36,6 +36,7 @@ public class Ciudad {
 
 	/**
 	 * constructor with parameters
+	 * 
 	 * @param id
 	 * @param nombre
 	 * @param description
@@ -54,7 +55,7 @@ public class Ciudad {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * @return the clientes
 	 */
@@ -63,7 +64,8 @@ public class Ciudad {
 	}
 
 	/**
-	 * @param clientes to set
+	 * @param clientes
+	 *            to set
 	 */
 	public void setCliente(Set<Cliente> clientes) {
 		this.clientes = clientes;
@@ -89,6 +91,4 @@ public class Ciudad {
 		this.clientes = clientes;
 	}
 
-	
-	
 }
