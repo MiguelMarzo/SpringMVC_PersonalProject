@@ -17,11 +17,11 @@
 
 	<a href="#">Clientes app</a>
 	<ul>
-			<li><a href="<s:url value="/ciudads/${cliente.ciudad.id}" />" 
+			<li><a href="<s:url value="/ciudades/${cliente.ciudad.id}" />" 
 				title="Back to ciudad">Back to ciudad</a></li>
-		<li><a href="<s:url value="/ciudads/" />" title="View ciudads">View
-				ciudads</a></li>
-		<li><a href="<s:url value="/ciudads/new" />" title="New ciudad">New
+		<li><a href="<s:url value="/ciudades/" />" title="View ciudades">View
+				ciudades</a></li>
+		<li><a href="<s:url value="/ciudades/new" />" title="New ciudad">New
 				ciudad</a></li>
 	</ul>
 

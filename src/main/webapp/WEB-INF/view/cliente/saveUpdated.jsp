@@ -6,18 +6,18 @@
 <title>SaveUpdate Task</title>
 </head>
 <body>
-	<a href="#">Users task app</a>
+	<a href="#">City clients app</a>
 	<ul>
-			<li><a href="<s:url value="/users/${task.user.id}" />" 
-				title="Back to user">Back to user</a></li>
-		<li><a href="<s:url value="/users/" />" title="View users">View
-				users</a></li>
-		<li><a href="<s:url value="/users/new" />" title="New user">New
-				user</a></li>
+			<li><a href="<s:url value="/clientes/${cliente.ciudad.id}" />" 
+				title="Back to ciudad">Back to Ciudad</a></li>
+		<li><a href="<s:url value="/ciudades/" />" title="View ciudades">View
+				ciudades</a></li>
+		<li><a href="<s:url value="/ciudades/new" />" title="New ciudad">New
+				ciudad</a></li>
 	</ul>
-	<h1>Ok, ${task.id} task called ${task.name} was UPDATED</h1>
+	<h1>Ok, ${cliente.id} cliente called ${cliente.nombre} was UPDATED</h1>
 
 
-	<p>&copy; 2015 Eugenia Pérez</p>
+	<p>&copy; 2017 Miguel Marzo</p>
 </body>
 </html>

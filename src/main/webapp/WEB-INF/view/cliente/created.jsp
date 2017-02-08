@@ -25,7 +25,7 @@
 				ciudad</a></li>
 	</ul>
 
-	<h1>Task created</h1>
+	<h1>Client created</h1>
 
 	<div class="alert alert-success" role="alert">The following cliente
 		has been created successfully</div>
@@ -43,12 +43,12 @@
 				<td>${cliente.id}</td>
 				<td>${cliente.nombre}</td>
 				<td>${cliente.direccion}</td>
-				<td>${cliente.ciudad.nombre}</td>
+				<td>${cliente.ciudad.id}</td>
 			</tr>
 		</tbody>
 	</table>
 
-	<p class="text-muted">&copy; 2015 Eugenia Pérez</p>
+	<p class="text-muted">&copy; 2017 Miguel Marzo</p>
 
 </body>
 </html>

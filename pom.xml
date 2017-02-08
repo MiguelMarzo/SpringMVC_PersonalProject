@@ -78,7 +78,7 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		
+
 		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -113,6 +113,17 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
+		<!-- Validation -->
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>4.1.0.Final</version>
+		</dependency>
 
 
 		<!-- Test Artifacts -->

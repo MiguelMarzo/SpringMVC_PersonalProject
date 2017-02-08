@@ -9,11 +9,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Users</title>
+<title>Spring forms :: Ciudades</title>
 </head>
 <body>
 
-	<a href="#">Users app</a>
+	<a href="#">Ciudades app</a>
 	<ul>
 		<li><a href="<s:url value="/ciudades/" />" title="View ciudades">View
 				ciudades</a></li>
@@ -47,7 +47,7 @@
 		</tbody>
 	</table>
 
-	<p>&copy; 2015 Eugenia Pérez</p>
+	<p>&copy; 2017 Miguel Marzo</p>
 
 </body>
 </html>

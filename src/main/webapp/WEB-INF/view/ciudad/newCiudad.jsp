@@ -25,7 +25,7 @@
 	<p>See this ciudad info</p>
 
 	<c:url var="post_ciudad"  value="/ciudades/new" />
-	<sf:form method="post" modelAttribute="ciudad" action="${post_ciudad}">
+	<sf:form method="post" modelAttribute="ciudad" action="${post_ciudad}" id="newCiudad">
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
 			<sf:input path="nombre" placeholder="nombre" />
@@ -40,4 +40,5 @@
 	<p class="text-muted">&copy; 2017 Miguel Marzo</p>
 
 </body>
+<script src="<c:url value="/resources/js/validateCiudadForm.js" />"></script>
 </html>

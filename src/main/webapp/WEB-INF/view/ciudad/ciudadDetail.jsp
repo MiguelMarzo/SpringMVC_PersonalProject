@@ -85,9 +85,9 @@
 								<tr>
 									<td>${cliente.id}</td>
 									<td>${cliente.nombre}</td>
-									<td>${cliente."direccion"}</td>
-									<td>${cliente."telefono"}</td>
-									<td>${cliente."email"}</td>
+									<td>${cliente.direccion}</td>
+									<td>${cliente.telefono}</td>
+									<td>${cliente.email}</td>
 									<td><a href="<s:url value="/clientes/${cliente.id}" />"
 										title="Detailed info"> See detail</a> || <a
 										href="<c:url value="/clientes/update/${cliente.id}" />">Update</a>
