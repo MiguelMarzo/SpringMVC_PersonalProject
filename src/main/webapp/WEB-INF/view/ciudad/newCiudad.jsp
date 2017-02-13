@@ -9,6 +9,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js">	
+</script>
+<script src="<c:url value="/resources/js/validateUserForm.js" />"></script>
 <title>Spring forms :: Ciudades</title>
 
 </head>
@@ -29,10 +35,12 @@
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
 			<sf:input path="nombre" placeholder="nombre" />
+			<sf:errors path="nombre" cssClass="error" />
 		</div>
 		<div class="form-group">
 			<label for="cpostal">Codigo Postal</label>
 			<sf:input path="cpostal" placeholder="cpostal" />
+			<sf:errors path="cpostal" cssClass="error" />
 		</div>
 		<sf:button>Create</sf:button>
 	</sf:form>

@@ -21,10 +21,12 @@
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
 			<sf:input path="nombre" placeholder="nombre" />
+			<sf:errors path="nombre" cssClass="error" />
 		</div>
 		<div class="form-group">
 			<label for="cpostal">C Postal</label>
 			<sf:input path="cpostal" type="cpostal" placeholder="cpostal" />
+			<sf:errors path="cpostal" cssClass="error" />
 		</div>
 		<sf:button>Update</sf:button>
 	</sf:form>

@@ -3,6 +3,12 @@ package org.sistema.springmvc.forms.models;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,9 +28,18 @@ public class Ciudad {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Pattern(regexp = "[0-9]+", message = "Must contain only numbers")
 	private int id;
+	
+	@Size(max = 50, message = "Nombre must be max 50 characters long")
+	@Pattern(regexp = "[A-Za-z0-9]+", message = "Must contain only chars and numbers")
+	@NotNull(message="Campo requerido")
 	private String nombre;
+	
+	@Range(min =  10000, max =  99999, message="Debe estar entre 10000 y 99999")
+	@Pattern(regexp = "[0-9]+", message = "Must contain only numbers")
 	private String cpostal;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "ciudad")
 	private Set<Cliente> clientes = new HashSet<Cliente>();
 

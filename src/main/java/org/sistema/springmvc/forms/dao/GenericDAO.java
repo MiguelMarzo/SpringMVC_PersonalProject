@@ -43,6 +43,7 @@ public class GenericDAO<T> {
 	 * Insert the specific entity.
 	 * 
 	 * @param entity
+	 * @return 
 	 * @throws HibernateException
 	 */
 	@Transactional

@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 /**
  * Represents a Cliente
@@ -17,11 +20,29 @@ import javax.persistence.ManyToOne;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Pattern(regexp = "[0-9]+", message = "Must contain only numbers")
 	private int id;
+	
+	@Size(max = 50, message = "Nombre must be max 50 characters long")
+	@NotNull(message="Campo requerido")
+	@Pattern(regexp = "[A-Za-z0-9]+", message = "Must contain only chars and numbers")
 	private String nombre;
+	
+	@Size(max = 100, message = "Dirección must be max 100 characters long")
+	@NotNull(message="Campo requerido")
+	@Pattern(regexp = "[A-Za-z0-9]+", message = "Must contain only chars and numbers")
 	private String direccion;
+	
+	@Size(max = 10, message = "Telefono must be max 10 characters long")
+	@NotNull(message="Campo requerido")
+	@Pattern(regexp = "[A-Za-z0-9]+", message = "Must contain only chars and numbers")
 	private String telefono;
+	
+	@Size(max = 100, message = "Email must be max 100 characters long")
+	@NotNull(message="Campo requerido")
+	@Pattern(regexp = "[A-Za-z0-9]+", message = "Must contain only chars and numbers")
 	private String email;
+	
 	@ManyToOne
     @JoinColumn(name="idCiudad")
 	private Ciudad ciudad;

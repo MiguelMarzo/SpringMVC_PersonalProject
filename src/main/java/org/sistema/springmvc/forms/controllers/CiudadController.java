@@ -3,6 +3,8 @@ package org.sistema.springmvc.forms.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.sistema.springmvc.forms.dao.CiudadDAO;
 import org.sistema.springmvc.forms.models.Ciudad;
 import org.sistema.springmvc.forms.models.Cliente;
@@ -12,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,12 +28,10 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class CiudadController {
-	private static final Logger logger = LoggerFactory
-			.getLogger(CiudadController.class);
+	private static final Logger logger = LoggerFactory.getLogger(CiudadController.class);
 
 	@Autowired
 	private CiudadDAO ciudadDAO;
-
 
 	/**
 	 * handles default /ciudades
@@ -43,7 +44,6 @@ public class CiudadController {
 	public String showCiudades(Map<String, Object> model) {
 		logger.info("Ciudad showCiudades. ");
 
-		
 		List<Ciudad> ciudades = ciudadDAO.selectAll(Ciudad.class);
 		model.put("ciudades", ciudades);
 
@@ -57,14 +57,13 @@ public class CiudadController {
 	 * @return the name of the view to show RequestMapping({"/ciudades/{id}"})
 	 */
 	@RequestMapping(method = RequestMethod.GET, value = { "/ciudades/{id}" })
-	public String ciudadDetail(@PathVariable(value = "id") Integer id,
-			Map<String, Object> model) {
+	public String ciudadDetail(@PathVariable(value = "id") Integer id, Map<String, Object> model) {
 		logger.info("Ciudad detail");
 
 		Ciudad ciudad = ciudadDAO.selectById(id, Ciudad.class);
-		//The ciudad gets his own collection of tasks load
+		// The ciudad gets his own collection of tasks load
 		model.put("ciudad", ciudad);
-		
+
 		// We add task for the new task form
 		Cliente cliente = new Cliente();
 		cliente.setCiudad(ciudad);
@@ -72,8 +71,7 @@ public class CiudadController {
 
 		return "ciudad/ciudadDetail";
 	}
-	
-	
+
 	/**
 	 * handles /ciudades/new by GET
 	 * 
@@ -94,22 +92,30 @@ public class CiudadController {
 	 * @return the name of the view to show RequestMapping({"/ciudades/new"})
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "/ciudades/new" })
-	public ModelAndView createCiudad(Ciudad ciudad) {
+	public ModelAndView createCiudad(@Valid Ciudad ciudad, BindingResult bindingResult) {
 		logger.info("Saveview POST " + ciudad.getId());
 
 		ModelAndView modelAndView = new ModelAndView();
 
-		ciudadDAO.insert(ciudad);
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("ciudad/newCiudad");
+			modelAndView.addObject("ciudad", ciudad);
+			return modelAndView;
+		}
+		try {
+			ciudadDAO.insert(ciudad);
 			// We return view name
 			modelAndView.setViewName("ciudad/created");
 			modelAndView.addObject("ciudad", ciudad);
-		
+		} catch (Exception e) {
+			modelAndView.setViewName("error");
+			modelAndView.addObject("error", "An error ocurred while trying to create a new ciudad. Please, try again");
+		}
+
 		return modelAndView;
+
 	}
 
-	
-	
-	
 	/**
 	 * Simply selects the update view
 	 */
@@ -127,22 +133,27 @@ public class CiudadController {
 	 * Handles the POST from the Custom.jsp page to update the Ciudad.
 	 */
 	@RequestMapping(value = "/ciudades/saveupdate", method = RequestMethod.POST)
-	public ModelAndView saveUpdate(Ciudad ciudad) {
+	public ModelAndView saveUpdate(@Valid Ciudad ciudad, BindingResult bindingResult) {
 		logger.info("Save update " + ciudad.getId());
-
-		ciudadDAO.update(ciudad);
-
 		ModelAndView modelAndView = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("ciudad/update");
+			modelAndView.addObject("ciudad", ciudad);
+			return modelAndView;
+		}
 
-		// We pass the ciudad received through this object
-		modelAndView.addObject("ciudad", ciudad);
+		try {
+			ciudadDAO.update(ciudad);
+			// We return view name
+			modelAndView.setViewName("ciudad/saveUpdated");
+			modelAndView.addObject("ciudad", ciudad);
+		} catch (Exception e) {
+			modelAndView.setViewName("error");
+			modelAndView.addObject("error", "An error ocurred while trying to create a new city. Please, try again");
+		}
 
-		// The same as return "ciudad/saveUpdate"
-		modelAndView.setViewName("ciudad/saveUpdated");
 		return modelAndView;
 	}
-	
-	
 
 	/**
 	 * Delete the specific ciudad
@@ -150,12 +161,11 @@ public class CiudadController {
 	@RequestMapping(value = "/ciudades/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable(value = "id") Integer ciudadId, Model model) {
 		logger.info("Ciudad detail /delete");
-		
+
 		ciudadDAO.delete(ciudadDAO.selectById(ciudadId, Ciudad.class));
 		model.addAttribute("ciudadId", ciudadId);
 
 		return "ciudad/deleted";
 	}
-	
 
 }
