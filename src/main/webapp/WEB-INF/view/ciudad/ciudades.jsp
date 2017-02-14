@@ -13,7 +13,7 @@
 </head>
 <body>
 
-	<a href="#">Ciudades app</a>
+	
 	<ul>
 		<li><a href="<s:url value="/ciudades/" />" title="View ciudades">View
 				ciudades</a></li>
@@ -40,8 +40,8 @@
 					<td>${ciudad.cpostal}</td>
 					<td><a href="<s:url value="/ciudades/${ciudad.id}" />"
 						title="Detailed info"> see detail</a> || <a
-						href="<c:url value="/ciudades/update/${ciudad.id}" />">update</a> || <a
-						href="<c:url value="/ciudades/delete/${ciudad.id}" />">delete</a></td>
+						href="<c:url value="/ciudades/update/${ciudad.id}" />">update</a>
+						|| <a href="<c:url value="/ciudades/delete/${ciudad.id}" />">delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

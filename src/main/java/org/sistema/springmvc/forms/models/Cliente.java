@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Pattern(regexp = "[0-9]+", message = "Must contain only numbers")
+	//@Pattern(regexp = "[0-9]+", message = "Must contain only numbers")
 	private int id;
 	
 	@Size(max = 50, message = "Nombre must be max 50 characters long")

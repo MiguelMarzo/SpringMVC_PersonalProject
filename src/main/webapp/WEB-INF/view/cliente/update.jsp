@@ -19,6 +19,12 @@
 	<h1>Update ciudad cliente</h1>
 	<s:url var="action" value="/clientes/saveupdate" />
 	<sf:form method="post" action="${action}" modelAttribute="cliente">
+		<div>
+			<label for="ciudad">Ciudad</label>
+			<sf:select path="ciudad.id">
+				<sf:options items="${ciudad}" itemLabel="nombre" itemValue="id" />
+			</sf:select>
+		</div>
 		<sf:hidden path="id" />
 		<sf:hidden path="ciudad.id" />
 		<div class="form-group">

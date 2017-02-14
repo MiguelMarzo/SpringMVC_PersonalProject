@@ -1,14 +1,20 @@
 package org.sistema.springmvc.forms.controllers;
 
+import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
+import org.sistema.springmvc.forms.dao.CiudadDAO;
 import org.sistema.springmvc.forms.dao.GenericDAO;
+import org.sistema.springmvc.forms.models.Ciudad;
 import org.sistema.springmvc.forms.models.Cliente;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +33,8 @@ public class ClienteController {
 
 	@Autowired
 	private GenericDAO<Cliente> clienteDAO;
+	@Autowired
+	private CiudadDAO ciudadDAO = new CiudadDAO();
 
 	/**
 	 * handles /clientes/id
@@ -46,21 +54,29 @@ public class ClienteController {
 	}
 
 	/**
-	 * handles /users/cliente/new by POST
+	 * handles /ciudades/cliente/new by POST
 	 * 
-	 * @return the name of the view to show RequestMapping({"/users/new"})
+	 * @return the name of the view to show RequestMapping({"/clientes/new"})
 	 */
 	@RequestMapping(method = RequestMethod.POST, value = { "/clientes/new" })
-	public ModelAndView createCliente(Cliente cliente) {
+	public ModelAndView createCliente(@Valid Cliente cliente, BindingResult bindingResult) {
 		
 		ModelAndView modelAndView = new ModelAndView();
-
-		clienteDAO.insert(cliente);
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("cliente/created");
+			modelAndView.addObject("cliente", cliente);
+			return modelAndView;
+		}
+		try {
+			clienteDAO.insert(cliente);
 			// We return view name
 			modelAndView.setViewName("cliente/created");
 			modelAndView.addObject("cliente", cliente);
-			logger.info("Saveview POST " + cliente.getId());
-		
+		} catch (Exception e) {
+			modelAndView.setViewName("error");
+			modelAndView.addObject("error", "An error ocurred while trying to create a new ciudad. Please, try again");
+		}
+
 		return modelAndView;
 	}
 
@@ -71,29 +87,41 @@ public class ClienteController {
 	public String updateCliente(@PathVariable(value = "id") Integer clienteId,
 			Model model) {
 		logger.info("Showing update cliente view GET ");
-
-		// We find the cliente through DAO and load into model
 		model.addAttribute("cliente", clienteDAO.selectById(clienteId,Cliente.class));
-
-		return "cliente/update";
+		
+		Cliente cliente = clienteDAO.selectById(clienteId, Cliente.class);
+		
+		List<Ciudad> ciudad = ciudadDAO.selectAll(Ciudad.class);
+		// add to model 
+		model.addAttribute("cliente", cliente);
+		model.addAttribute("ciudad", ciudad);
+		logger.info("Here we have: " + ciudad);
+		
+		return "cliente/update";		
 	}
 
 	/**
-	 * Handles the POST from the Custom.jsp page to update the User.
+	 * Handles the POST from the Custom.jsp page to update the client.
 	 */
 	@RequestMapping(value = "/clientes/saveupdate", method = RequestMethod.POST)
-	public ModelAndView saveUpdateCliente(Cliente cliente) {
+	public ModelAndView saveUpdateCliente(@Valid Cliente cliente, BindingResult bindingResult) {
 		logger.info("Save update cliente " + cliente.getId());
-
-		clienteDAO.update(cliente);
-
 		ModelAndView modelAndView = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("cliente/saveUpdated");
+			modelAndView.addObject("cliente", cliente);
+			return modelAndView;
+		}	
 
-		// We pass the user received through this object
-		modelAndView.addObject("cliente", cliente);
-
-		// The same as return "user/saveUpdate"
-		modelAndView.setViewName("cliente/saveUpdated");
+		try {
+			clienteDAO.update(cliente);
+			// We return view name
+			modelAndView.setViewName("cliente/saveUpdated");
+			modelAndView.addObject("cliente", cliente);
+		} catch (Exception e) {
+			modelAndView.setViewName("error");
+			modelAndView.addObject("error", "An error ocurred while trying to create a new city. Please, try again");
+		}
 		return modelAndView;
 	}
 
