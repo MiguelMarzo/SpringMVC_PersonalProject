@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Users</title>
+<title><s:message code="title"></s:message></title>
 
 <!-- Bootstrap -->
 <link
@@ -22,24 +22,24 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+				<a class="navbar-brand" href="#"><s:message code="title"></s:message></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/ciudades/" />"
-						title="View ciudades">View ciudades</a></li>
+						title="View ciudades"><s:message code="viewCities"></s:message></a></li>
 					<li><a href="<s:url value="/ciudades/new" />"
-						title="New ciudad">New ciudad</a></li>
+						title="New ciudad"><s:message code="newCity"></s:message></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="true"><s:message
-								code="navbar.language"></s:message> <span class="caret"></span>
+								code="language"></s:message> <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="?locale=en"><img src="blank.gif"
 									class="flag flag-gb"
-									alt="<s:message code="english"></s:message>" /> <s:message
+									alt="<s:message code="english"></s:message>"/> <s:message
 										code="english"></s:message></a></li>
 							<li><a href="?locale=es"><img src="blank.gif"
 									class="flag flag-es"
@@ -53,8 +53,8 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>ciudad cliente detail</h1>
-			<p>See this cliente info</p>
+			<h1><s:message code="clientDetail"></s:message></h1>
+			<p><s:message code="seeClientInfo"></s:message></p>
 		</div>
 		<c:choose>
 			<c:when test="${not empty cliente}">
@@ -62,11 +62,11 @@
 					<thead>
 						<tr>
 							<th>ID</th>
-							<th>Nombre</th>
-							<th>Direccion</th>
-							<th>Telefono</th>
-							<th>Email</th>
-							<th>Ciudad</th>
+							<th><s:message code="name"></s:message></th>
+							<th><s:message code="address"></s:message></th>
+							<th><s:message code="phonenumber"></s:message></th>
+							<th><s:message code="email"></s:message></th>
+							<th><s:message code="city"></s:message></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -84,8 +84,7 @@
 
 			</c:when>
 			<c:otherwise>
-				<div>A cliente with the id specified has not been found.
-					Please, try again</div>
+				<div><s:message code="clientWithIdNotFound"></s:message></div>
 			</c:otherwise>
 		</c:choose>
 	</div>

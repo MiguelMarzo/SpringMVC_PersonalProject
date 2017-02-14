@@ -9,7 +9,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Ciudades</title>
+<title><s:message code="title"></s:message></title>
+
+<!-- Bootstrap -->
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -19,24 +21,24 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Cities app</a>
+				<a class="navbar-brand" href="#"><s:message code="title"></s:message></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/ciudades/" />"
-						title="View ciudades">View ciudades</a></li>
+						title="View ciudades"><s:message code="viewCities"></s:message></a></li>
 					<li><a href="<s:url value="/ciudades/new" />"
-						title="New ciudad">New ciudad</a></li>
+						title="New ciudad"><s:message code="newCity"></s:message></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="true"><s:message
-								code="navbar.language"></s:message> <span class="caret"></span>
+								code="language"></s:message> <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="?locale=en"><img src="blank.gif"
 									class="flag flag-gb"
-									alt="<s:message code="english"></s:message>" /> <s:message
+									alt="<s:message code="english"></s:message>"/> <s:message
 										code="english"></s:message></a></li>
 							<li><a href="?locale=es"><img src="blank.gif"
 									class="flag flag-es"
@@ -50,23 +52,23 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>New ciudad</h1>
-			<p>See this ciudad info</p>
+			<h1><s:message code="newCity"></s:message></h1>
+			<p><s:message code="seeCityInfo"></s:message></p>
 		</div>
 		<c:url var="post_ciudad" value="/ciudades/new" />
 		<sf:form method="post" modelAttribute="ciudad" action="${post_ciudad}"
 			id="newCiudad">
 			<div class="form-group">
-				<label for="nombre">Nombre</label>
+				<label for="nombre"><s:message code="name"></s:message></label>
 				<sf:input path="nombre" placeholder="nombre" class="form-control"/>
 				<sf:errors path="nombre" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="cpostal">Codigo Postal</label>
+				<label for="cpostal"><s:message code="postalCode"></s:message></label>
 				<sf:input path="cpostal" placeholder="cpostal" class="form-control"/>
 				<sf:errors path="cpostal" cssClass="error" />
 			</div>
-			<sf:button>Create</sf:button>
+			<sf:button><s:message code="create"></s:message></sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">
