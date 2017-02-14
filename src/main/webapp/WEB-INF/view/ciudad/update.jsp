@@ -2,12 +2,13 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <%@ page session="false"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spring forms :: Users</title>
+<title><s:message code="title"></s:message></title>
 
 <!-- Bootstrap -->
 <link
@@ -19,20 +20,19 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Users app</a>
+				<a class="navbar-brand" href="#"><s:message code="title"></s:message></a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url value="/ciudades/" />"
-						title="View ciudades">View ciudades</a></li>
+						title="View ciudades"><s:message code="viewCities"></s:message></a></li>
 					<li><a href="<s:url value="/ciudades/new" />"
-						title="New ciudad">New ciudad</a></li>
+						title="New ciudad"><s:message code="newCity"></s:message></a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="true"><s:message
-								code="navbar.language"></s:message> <span class="caret"></span>
-					</a>
+								code="language"></s:message> <span class="caret"></span> </a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="?locale=en"><img src="blank.gif"
 									class="flag flag-gb"
@@ -50,22 +50,23 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Update ciudad</h1>
+			<h1><s:message code="updateCity"></s:message></h1>
 		</div>
 		<s:url var="action" value="/ciudades/saveupdate" />
 		<sf:form method="post" action="${action}" modelAttribute="ciudad">
 			<sf:hidden path="id" />
 			<div class="form-group">
-				<label for="nombre">Nombre</label>
-				<sf:input path="nombre" placeholder="nombre" class="form-control"/>
+				<label for="nombre"><s:message code="name"></s:message></label>
+				<sf:input path="nombre" placeholder="nombre" class="form-control" />
 				<sf:errors path="nombre" cssClass="error" />
 			</div>
 			<div class="form-group">
-				<label for="cpostal">C Postal</label>
-				<sf:input path="cpostal" type="cpostal" placeholder="cpostal" class="form-control"/>
+				<label for="cpostal"><s:message code="postalCode"></s:message></label>
+				<sf:input path="cpostal" type="cpostal" placeholder="cpostal"
+					class="form-control" />
 				<sf:errors path="cpostal" cssClass="error" />
 			</div>
-			<sf:button>Update</sf:button>
+			<sf:button><s:message code="update"></s:message></sf:button>
 		</sf:form>
 	</div>
 	<footer class="footer">
