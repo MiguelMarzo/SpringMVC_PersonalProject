@@ -10,8 +10,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><s:message code="title"></s:message></title>
+<<<<<<< HEAD
 
 <!-- Bootstrap -->
+=======
+>>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -32,8 +35,13 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
+<<<<<<< HEAD
 						data-toggle="dropdown" role="button" aria-expanded="true"><s:message
 								code="language"></s:message> <span class="caret"></span> </a>
+=======
+						data-toggle="dropdown" role="button" aria-expanded="true"><span class="caret"></span>
+					</a>
+>>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 						<ul class="dropdown-menu" role="menu">
 							<li><a href="?locale=en"><img src="blank.gif"
 									class="flag flag-gb"
@@ -52,16 +60,22 @@
 
 	<div class="container">
 		<div class="jumbotron">
+<<<<<<< HEAD
 			<h1>
 				<s:message code="cityList"></s:message>
 			</h1>
 			<p>
 				<s:message code="citiesInTheSystem"></s:message>
 			</p>
+=======
+			<h1><s:message code="cityList"></s:message></h1>
+			<p><s:message code="citiesInTheSystem"></s:message></p>
+>>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 		</div>
 		<table class="table">
 			<thead>
 				<tr>
+<<<<<<< HEAD
 					<th><p>
 							<s:message code="cityID"></s:message>
 						</p></th>
@@ -71,6 +85,11 @@
 					<th><p>
 							<s:message code="postalCode"></s:message>
 						</p></th>
+=======
+					<th><p><s:message code="cityID"></s:message></p></th>
+					<th><p><s:message code="name"></s:message></p></th>
+					<th><p><s:message code="postalCode"></s:message></p></th>
+>>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 				</tr>
 			</thead>
 			<tbody>
@@ -79,12 +98,21 @@
 						<td>${ciudad.nombre}</td>
 						<td>${ciudad.cpostal}</td>
 						<td><a href="<s:url value="/ciudades/${ciudad.id}" />"
+<<<<<<< HEAD
 							title="Detailed info"> <s:message code="seeDetail"></s:message></a>
 							|| <a href="<c:url value="/ciudades/update/${ciudad.id}" />">
 								<s:message code="update"></s:message>
 						</a> || <a href="<c:url value="/ciudades/delete/${ciudad.id}" />">
 								<s:message code="delete"></s:message>
 						</a></td>
+=======
+							title="Detailed info">
+							<s:message code="seeDetail"></s:message></a> || <a
+							href="<c:url value="/ciudades/update/${ciudad.id}" />">
+							<s:message code="update"></s:message></a>
+							|| <a href="<c:url value="/ciudades/delete/${ciudad.id}" />">
+							<s:message code="delete"></s:message></a></td>
+>>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 					</tr>
 				</c:forEach>
 			</tbody>
