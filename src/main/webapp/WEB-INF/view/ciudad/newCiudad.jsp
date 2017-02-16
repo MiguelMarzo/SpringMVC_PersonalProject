@@ -68,8 +68,12 @@
 				<sf:input path="cpostal" placeholder="cpostal" class="form-control"/>
 				<sf:errors path="cpostal" cssClass="error" />
 			</div>
+<<<<<<< HEAD
 			<sf:button><s:message code="create"></s:message></sf:button>
 			<sf:button><s:message code="create"></s:message></sf:button>
+=======
+			<sf:button><s:message code="create"></s:message>" /></sf:button>
+>>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 		</sf:form>
 	</div>
 	<footer class="footer">
