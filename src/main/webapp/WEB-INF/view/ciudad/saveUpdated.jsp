@@ -27,8 +27,6 @@
 						title="View ciudades"><s:message code="viewCities"></s:message></a></li>
 					<li><a href="<s:url value="/ciudades/new" />"
 						title="New ciudad"><s:message code="newCity"></s:message></a></li>
-<<<<<<< HEAD
-=======
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -44,7 +42,6 @@
 									alt="<s:message code="spanish"></s:message>" /> <s:message
 										code="spanish"></s:message></a></li>
 						</ul></li>
->>>>>>> branch 'master' of https://github.com/MiguelMarzo/SpringMVC_PersonalProject
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
