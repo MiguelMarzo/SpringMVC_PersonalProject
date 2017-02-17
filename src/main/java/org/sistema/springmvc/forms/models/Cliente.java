@@ -10,12 +10,15 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Represents a Cliente
  * 
  * @author Miguel Marzo
  *
  */
+@JsonIgnoreProperties({"Ciudad"})
 @Entity
 public class Cliente {
 	@Id
@@ -47,6 +50,14 @@ public class Cliente {
     @JoinColumn(name="idCiudad")
 	private Ciudad ciudad;
 	
+	public Ciudad getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(Ciudad ciudad) {
+		this.ciudad = ciudad;
+	}
+
 	/**
 	 * default constructor
 	 */
@@ -59,11 +70,10 @@ public class Cliente {
 	 * @param nombre
 	 * @param description
 	 */
-	public Cliente(int id, String nombre, String direccion, String telefono, String email,Ciudad ciudad) {
+	public Cliente(int id, String nombre, String direccion, String telefono, String email) {
 		this.id = id;
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.ciudad = ciudad;
 		this.telefono = telefono;
 		this.email = email;
 	}
@@ -110,19 +120,6 @@ public class Cliente {
 		this.direccion = description;
 	}
 
-	/**
-	 * @return the city
-	 */
-	public Ciudad getCiudad() {
-		return ciudad;
-	}
-
-	/**
-	 * @param city the city to set
-	 */
-	public void setCiudad(Ciudad ciudad) {
-		this.ciudad = ciudad;
-	}
 
 	public String getDireccion() {
 		return direccion;

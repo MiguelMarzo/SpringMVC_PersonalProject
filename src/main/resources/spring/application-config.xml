@@ -43,7 +43,7 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -53,5 +53,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-
+	<bean id="clienteDAO" class="org.sistema.springmvc.forms.dao.GenericDAO">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 </beans>

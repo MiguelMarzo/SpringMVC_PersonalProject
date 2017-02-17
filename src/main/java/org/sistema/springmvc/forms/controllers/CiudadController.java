@@ -66,7 +66,6 @@ public class CiudadController {
 
 		// We add task for the new task form
 		Cliente cliente = new Cliente();
-		cliente.setCiudad(ciudad);
 		model.put("cliente", cliente);
 
 		return "ciudad/ciudadDetail";

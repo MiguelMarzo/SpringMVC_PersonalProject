@@ -66,7 +66,6 @@
 							<th><s:message code="address"></s:message></th>
 							<th><s:message code="phonenumber"></s:message></th>
 							<th><s:message code="email"></s:message></th>
-							<th><s:message code="city"></s:message></th>
 						</tr>
 					</thead>
 					<tbody>

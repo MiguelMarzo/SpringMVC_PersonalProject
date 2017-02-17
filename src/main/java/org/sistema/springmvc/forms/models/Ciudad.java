@@ -9,6 +9,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -23,6 +25,7 @@ import javax.persistence.OneToMany;
  * @author Miguel Marzo
  *
  */
+@JsonIgnoreProperties({"clientes"})
 @Entity
 public class Ciudad {
 
