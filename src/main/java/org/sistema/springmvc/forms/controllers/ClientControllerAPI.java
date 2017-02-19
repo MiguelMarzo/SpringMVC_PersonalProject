@@ -21,7 +21,7 @@ public class ClientControllerAPI {
 	@Autowired
 	private GenericDAO<Cliente> clienteDAO;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET, value = { "/all" })
 	public List<Cliente> getAll() {
 		return clienteDAO.selectAll(Cliente.class);
 	}
