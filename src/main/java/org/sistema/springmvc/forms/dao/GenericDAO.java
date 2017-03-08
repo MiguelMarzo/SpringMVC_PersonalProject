@@ -23,7 +23,7 @@ public class GenericDAO<T> {
 	@Transactional(readOnly = true)
 	public List<Cliente> lastClients(Integer id) {
 
-		Query query = getSession().createQuery("from clientes c where c.id > :id order by c.id");
+		Query query = getSession().createQuery("from Cliente c where c.id > :id order by c.id");
 
 		query.setParameter("id", id);
 

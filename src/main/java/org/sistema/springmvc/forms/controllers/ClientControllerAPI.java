@@ -45,7 +45,7 @@ public class ClientControllerAPI {
 	}
 	
 	@RequestMapping(value= "/last/{id}", method = RequestMethod.GET)
-	public List<Cliente> lastClients(@PathVariable Integer id, @RequestBody @Valid Cliente client){
+	public List<Cliente> lastClients(@PathVariable(value="id") Integer id){
 		return clienteDAO.lastClients(id);
 	}
 
