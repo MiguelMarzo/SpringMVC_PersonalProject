@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
  *
  */
 
-public class GenericDAO<T> {
+public class ClienteDAO<T> {
 	
 	@Transactional(readOnly = true)
 	public List<Cliente> lastClients(Integer id) {

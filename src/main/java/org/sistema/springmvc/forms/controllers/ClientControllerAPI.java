@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.sistema.springmvc.forms.dao.ClienteDAO;
 import org.sistema.springmvc.forms.dao.GenericDAO;
 import org.sistema.springmvc.forms.models.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class ClientControllerAPI {
 			@RequestBody @Valid Cliente clients) {
 		clients.setId(id);
 		clienteDAO.update(clients);
+	}
+	
+	@RequestMapping(value= "/last/{id}", method = RequestMethod.GET)
+	public List<Cliente> lastClients(@PathVariable Integer id, @RequestBody @Valid Cliente client){
+		return clienteDAO.lastClients(id);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
