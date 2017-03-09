@@ -32,9 +32,9 @@ public class ClientControllerAPI {
 		return clienteDAO.selectById(id, Cliente.class);
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public void insert(@RequestBody @Valid Cliente clients) {
-		clienteDAO.insert(clients);
+	@RequestMapping(value = {"/new"} ,method = RequestMethod.POST)
+	public void insert(@RequestBody @Valid Cliente client) {
+		clienteDAO.insert(client);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
